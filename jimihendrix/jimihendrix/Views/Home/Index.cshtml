@@ -45,12 +45,12 @@
 
     function init() {
 
-        //if (screen.width < 800) {
-        //    setImgWidth("70%");
-        //}
-        //else {
-        //    setImgWidth("70%");
-        //}
+        if (window.innerWidth > 1000) {
+            setImgWidth("55%");
+        }
+        else {
+            setImgWidth("75%");
+        }
 
         centerElement("scene", "setting-layer")
         //doFeedback();
