@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Jimi Hendrix";
+}
+
+<div id="feedback">
+
+</div>
+<div id="scene">
+
+    <img data-depth="0.5" src="~/Content/images/bg.jpg" id="setting-layer" />
+    <img data-depth="0.6" src="~/Content/images/j8.gif" />
+    <img data-depth="0.7" src="~/Content/images/s1.gif" />
+    <img data-depth="0.8" src="~/Content/images/j7.gif" />
+    <img data-depth="0.9" src="~/Content/images/j6.gif" />
+    <img data-depth="1.0" src="~/Content/images/j5.gif" />
+    <img data-depth="1.1" src="~/Content/images/j4.gif" />
+    <img data-depth="1.2" src="~/Content/images/j3.gif" />
+    <img data-depth="1.3" src="~/Content/images/j2.gif" />
+    <img data-depth="1.4" src="~/Content/images/j1.gif" />
+
+</div>
+
+
+
+
+<script src="~/Scripts/parallax.min.js"></script>
+<script>
+
+    var scene = document.getElementById('scene');
+    var parallaxInstance = new Parallax(scene);
+    // parallaxInstance.invert(true, false);
+
+    window.onload = function () {
+
+        init();
+
+        onresize = function () {
+            init();
+        }
+
+    }
+
+
+
+
+    var scene = document.getElementById('scene');
+    var parallaxInstance = new Parallax(scene);
+    // parallaxInstance.invert(true, false);
+
+    //parallaxInstance.invertX = true;
+    //parallaxInstance.invertY = false;
+
+    function init() {
+        centerElement("scene", "setting-layer")
+        doFeedback();
+
+        if (isMobile()) {
+            parallaxInstance.invert(true, false);
+        } else {
+            parallaxInstance.invert(true, true);
+        }
+    }
+
+    function centerElement(id, settingId) {
+
+        var sl = document.getElementById(settingId);
+        var x = (window.innerWidth / 2) - (sl.offsetWidth / 2);
+        var y = (window.innerHeight / 2) - (sl.offsetHeight / 2);
+
+
+        var el = document.getElementById(id);
+        // el.style.position = "absolute";
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+
+    }
+    function doFeedback() {
+
+        var f = document.getElementById("feedback");
+        f.innerHTML = "Mobile: " + isMobile() + "<br/>";
+        f.innerHTML += "Landscape: " + isLandscape() + "<br/>";
+
+        f.innerHTML += "Window inner wh: " + window.innerWidth + " " + window.innerHeight + "<br/>";
+        f.innerHTML += "Screen wh: " + screen.width + " " + screen.height + "<br/>";
+
+        var s = document.getElementById("scene");
+        f.innerHTML += "Scene wh: " + s.offsetWidth + " " + s.offsetHeight + "<br/>";
+
+        var l = document.getElementById("setting-layer");
+        f.innerHTML += "Setting Layer wh: " + l.offsetWidth + " " + l.offsetHeight;
+
+    }
+
+    function isLandscape() {
+        return window.innerWidth > window.innerHeight;
+    }
+    function isMobile() {
+        return typeof window.orientation !== 'undefined';
+    }
+
+</script>

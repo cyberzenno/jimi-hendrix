@@ -1,0 +1,22 @@
+﻿body {
+    font-family: Arial;
+}
+
+img {
+    width: 70%;
+}
+
+
+#scene {
+    /*border: 2px solid green;*/
+}
+
+
+#feedback {
+    font-weight: bold;
+    position: fixed;
+    top: 200px;
+    left: 50px;
+    padding: 20px;
+    z-index: 1000;
+}
