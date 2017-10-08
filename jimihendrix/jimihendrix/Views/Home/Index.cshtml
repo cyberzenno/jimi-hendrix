@@ -44,8 +44,16 @@
     var parallaxInstance = new Parallax(scene);
 
     function init() {
+
+        //if (screen.width < 800) {
+        //    setImgWidth("70%");
+        //}
+        //else {
+        //    setImgWidth("70%");
+        //}
+
         centerElement("scene", "setting-layer")
-        // doFeedback();
+        //doFeedback();
 
         if (isMobile()) {
 
@@ -58,6 +66,8 @@
         } else {
             parallaxInstance.invert(true, true);
         }
+
+       
     }
 
     function centerElement(id, settingId) {
@@ -73,6 +83,23 @@
         el.style.top = y + "px";
 
     }
+    function setImgWidth(wValue) {
+        var img = document.getElementsByTagName("img");
+        for (var i = 0; i < img.length; i++) {
+            img[i].style.width = wValue;
+        }
+    }
+
+
+
+
+    function isLandscape() {
+        return window.innerWidth > window.innerHeight;
+    }
+    function isMobile() {
+        return typeof window.orientation !== 'undefined';
+    }
+
     function doFeedback() {
 
         var f = document.getElementById("feedback");
@@ -88,13 +115,6 @@
         var l = document.getElementById("setting-layer");
         f.innerHTML += "Setting Layer wh: " + l.offsetWidth + " " + l.offsetHeight;
 
-    }
-
-    function isLandscape() {
-        return window.innerWidth > window.innerHeight;
-    }
-    function isMobile() {
-        return typeof window.orientation !== 'undefined';
     }
 
 </script>
