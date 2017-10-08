@@ -301,3 +301,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+#libraries
+themes
+\jquery*
+\modernizr*
+\jsplumb*
+\bootstrap*
+\glyphicons*
