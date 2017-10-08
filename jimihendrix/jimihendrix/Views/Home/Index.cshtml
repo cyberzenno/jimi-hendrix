@@ -40,22 +40,21 @@
 
     }
 
-
-
-
     var scene = document.getElementById('scene');
     var parallaxInstance = new Parallax(scene);
-    // parallaxInstance.invert(true, false);
-
-    //parallaxInstance.invertX = true;
-    //parallaxInstance.invertY = false;
 
     function init() {
         centerElement("scene", "setting-layer")
-        doFeedback();
+        // doFeedback();
 
         if (isMobile()) {
-            parallaxInstance.invert(true, false);
+
+            if (isLandscape()) {
+                parallaxInstance.invert(true, false);
+            } else {
+                parallaxInstance.invert(false, false);
+            }
+
         } else {
             parallaxInstance.invert(true, true);
         }
