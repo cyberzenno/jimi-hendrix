@@ -80,16 +80,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\images\bg.jpg" />
-    <Content Include="Content\images\j1.gif" />
-    <Content Include="Content\images\j2.gif" />
-    <Content Include="Content\images\j3.gif" />
-    <Content Include="Content\images\j4.gif" />
-    <Content Include="Content\images\j5.gif" />
-    <Content Include="Content\images\j6.gif" />
-    <Content Include="Content\images\j7.gif" />
-    <Content Include="Content\images\j8.gif" />
-    <Content Include="Content\images\s1.gif" />
+    <Content Include="Content\images\bg.gif" />
+    <Content Include="Content\images\L0.gif" />
+    <Content Include="Content\images\L1.gif" />
+    <Content Include="Content\images\L2.gif" />
+    <Content Include="Content\images\L3.gif" />
+    <Content Include="Content\images\L4.gif" />
+    <Content Include="Content\images\L5.gif" />
+    <Content Include="Content\images\L6.gif" />
+    <Content Include="Content\images\L7.gif" />
+    <Content Include="Content\images\L8.gif" />
+    <Content Include="Content\images\L9.gif" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\parallax.min.js" />
