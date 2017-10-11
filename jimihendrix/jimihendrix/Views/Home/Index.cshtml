@@ -2,135 +2,21 @@
     ViewBag.Title = "Jimi Hendrix";
 }
 
-<div id="feedback">
 
-</div>
+
 <div id="scene">
 
-    <img data-depth="-1.0" src="~/Content/images/bg.gif" id="setting-layer" />
-    <img data-depth="-0.8" src="~/Content/images/L9.gif" />
-    <img data-depth="-0.6" src="~/Content/images/L8.gif" />
-    <img data-depth="-0.4" src="~/Content/images/L7.gif" />
-    <img data-depth="-0.2" src="~/Content/images/L6.gif" />
-    <img data-depth="0.0" src="~/Content/images/L5.gif" />
-    <img data-depth="0.2" src="~/Content/images/L4.gif" />
-    <img data-depth="0.4" src="~/Content/images/L3.gif" />
-    <img data-depth="0.6" src="~/Content/images/L2.gif" />
-    <img data-depth="0.8" src="~/Content/images/L1.gif" />
-    <img data-depth="1.0" src="~/Content/images/L0.gif" />
+    <img class="layer" data-depth="-1.0" src="~/Content/images/bg.jpg" />
+    <img class="layer" data-depth="-0.8" src="~/Content/images/L9.gif" />
+    <img class="layer" data-depth="-0.6" src="~/Content/images/L8.gif" />
+    <img class="layer" data-depth="-0.4" src="~/Content/images/L7.gif" />
+    <img class="layer" data-depth="-0.2" src="~/Content/images/L6.gif" />
+    <img class="layer" data-depth="0.0" src="~/Content/images/L5.gif" />
+    <img class="layer" data-depth="0.2" src="~/Content/images/L4.gif" />
+    <img class="layer" data-depth="0.4" src="~/Content/images/L3.gif" />
+    <img class="layer" data-depth="0.6" src="~/Content/images/L2.gif" />
+    <img class="layer" data-depth="0.8" src="~/Content/images/L1.gif" />
+    <img class="layer" data-depth="1.0" src="~/Content/images/L0.gif" />
 
 </div>
-
-
-
-
-<script src="~/Scripts/parallax.min.js"></script>
-<script>
-
-    window.onload = function () {
-
-        init();
-
-        onresize = function () {
-            init();
-        }
-
-    }
-
-
-    var scene = document.getElementById('scene');
-    var parallaxInstance = new Parallax(scene);
-
-    function init() {
-
-        if (window.innerWidth > 1000) {
-            setImgWidth("55%");
-        }
-        else {
-            setImgWidth("75%");
-        }
-
-        centerElement("scene", "setting-layer")
-        //doFeedback();
-
-        if (isMobile()) {
-
-            if (isLandscape()) {
-                parallaxInstance.invert(true, false);
-            } else {
-                parallaxInstance.invert(false, false);
-            }
-
-        } else {
-            parallaxInstance.invert(true, true);
-        }
-
-
-    }
-
-    function setDepth() {
-        var depth = -1;
-        var inc = 0.1;
-        var imgs = document.getElementsByTagName("img");
-        for (var i = 0; i < imgs.length; i++) {
-
-            if (i == 5) {
-
-                depth = 0;
-
-            }
-
-            imgs[i].dataset.depth = depth;
-            depth += inc;
-
-        }
-    }
-
-    function centerElement(id, settingId) {
-
-        var sl = document.getElementById(settingId);
-        var x = (window.innerWidth / 2) - (sl.offsetWidth / 2);
-        var y = (window.innerHeight / 2) - (sl.offsetHeight / 2);
-
-
-        var el = document.getElementById(id);
-        // el.style.position = "absolute";
-        el.style.left = x + "px";
-        el.style.top = y + "px";
-
-    }
-    function setImgWidth(wValue) {
-        var img = document.getElementsByTagName("img");
-        for (var i = 0; i < img.length; i++) {
-            img[i].style.width = wValue;
-        }
-    }
-
-
-
-
-    function isLandscape() {
-        return window.innerWidth > window.innerHeight;
-    }
-    function isMobile() {
-        return typeof window.orientation !== 'undefined';
-    }
-
-    function doFeedback() {
-
-        var f = document.getElementById("feedback");
-        f.innerHTML = "Mobile: " + isMobile() + "<br/>";
-        f.innerHTML += "Landscape: " + isLandscape() + "<br/>";
-
-        f.innerHTML += "Window inner wh: " + window.innerWidth + " " + window.innerHeight + "<br/>";
-        f.innerHTML += "Screen wh: " + screen.width + " " + screen.height + "<br/>";
-
-        var s = document.getElementById("scene");
-        f.innerHTML += "Scene wh: " + s.offsetWidth + " " + s.offsetHeight + "<br/>";
-
-        var l = document.getElementById("setting-layer");
-        f.innerHTML += "Setting Layer wh: " + l.offsetWidth + " " + l.offsetHeight;
-
-    }
-
-</script>
+<img id="frame" src="~/Content/images/frame4.gif" />

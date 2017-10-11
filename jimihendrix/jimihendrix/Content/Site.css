@@ -1,27 +1,34 @@
-﻿html { 
-    overflow-y: hidden; 
-    overflow-x: hidden; 
-
+﻿/*this avoids the scrollbars for the general document*/
+html {
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
+
 body {
     font-family: Arial;
+    background-image: url('images/concrete1.jpg');
 }
 
-img {
-    width: 75%;
+#frame {
 }
-
 
 #scene {
-    /*border: 2px solid green;*/
+    overflow: hidden;
+    width: 800px;
+    height: 579px;
+    /*border: 5px solid red;*/
+    background-color: white;
+}
+
+.layer {
+    /*border: 1px solid blue;*/
 }
 
 
-#feedback {
-    font-weight: bold;
+#feedback-container {
     position: fixed;
-    top: 200px;
-    left: 50px;
-    padding: 20px;
-    z-index: 1000;
+    z-index: 1;
+    border: 1px solid black;
+    width: 300px;
+    background-color: white;
 }
