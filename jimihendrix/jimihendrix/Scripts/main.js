@@ -1,53 +1,65 @@
 ﻿/// <reference path="jquery-1.9.1.js" />
 /// <reference path="jquery-1.9.1.intellisense.js" />
+/// <reference path="parallax.min.js" />
 
 window.onload = function () {
 
-    var scene = document.getElementById('scene');
-    var parallaxInstance = new Parallax(scene);
-
     setup();
 
-    parallaxSetup(parallaxInstance);
+    var pxBgScene = new Parallax(document.getElementById('bgScene'));
+    var pxScene = new Parallax(document.getElementById('scene'));
 
-    initEvents();
-
+    pxSetup(pxBgScene, pxScene);
 }
 
 
 function setup() {
 
     centerElement("frame", "frame");
+    centerElement("bgScene", "bgScene");
     centerElement("scene", "scene");
 }
 
-function initEvents() {
-    $("body").click(function () {
-        $("#feedback-container").toggle()
-    })
+function initEvents(px1, px2) {
 
-    $(window).resize(function () {
+    window.onresize = function () {
+
         setup();
-    })
 
+        pxInvertAxisForMobile(px1);
+        pxInvertAxisForMobile(px2);
+    }
 }
 
 
 //parallax
-function parallaxSetup(parallaxInstance) {
+function pxSetup(px1, px2) {
+
+    pxInvertAxisForMobile(px1);
+    pxInvertAxisForMobile(px2);
+
+    pxScalar(px1);
+    pxScalar(px2);
+}
+
+function pxInvertAxisForMobile(px) {
 
     if (isMobile()) {
 
         if (isLandscape()) {
-            parallaxInstance.invert(true, false);
+            px.invert(true, false);
         } else {
-            parallaxInstance.invert(false, false);
+            px.invert(false, false);
         }
 
     } else {
-        parallaxInstance.invert(true, true);
+        px.invert(true, true);
     }
 
+}
+
+function pxScalar(px) {
+    px.scalar(30, 30);
 }
 
 
@@ -76,29 +88,29 @@ function isMobile() {
 
 
 //feedback
-function frameFeedback() {
-    var frame = document.getElementById("frame")
+//function frameFeedback() {
+//    var frame = document.getElementById("frame")
 
-    addFeedback("frame.offsetWidth", frame.offsetWidth)
-    addFeedback("frame.offsetHeight", frame.offsetHeight)
-    addFeedback("frame.offsetTop", frame.offsetTop)
-    addFeedback("frame.offsetLeft", frame.offsetLeft)
-}
+//    addFeedback("frame.offsetWidth", frame.offsetWidth)
+//    addFeedback("frame.offsetHeight", frame.offsetHeight)
+//    addFeedback("frame.offsetTop", frame.offsetTop)
+//    addFeedback("frame.offsetLeft", frame.offsetLeft)
+//}
 
-function displayFeedback() {
+//function displayFeedback() {
 
-    cleanFeedback();
+//    cleanFeedback();
 
-    frameFeedback();
+//    frameFeedback();
 
-    addFeedback("window.innerWidth", window.innerWidth)
-    addFeedback("window.innerWidth", window.innerHeight)
-}
+//    addFeedback("window.innerWidth", window.innerWidth)
+//    addFeedback("window.innerWidth", window.innerHeight)
+//}
 
-function addFeedback(name, value) {
-    $("#feedback").append("<tr><td>" + name + "</td><td>" + value + "</td></tr>");
-}
+//function addFeedback(name, value) {
+//    $("#feedback").append("<tr><td>" + name + "</td><td>" + value + "</td></tr>");
+//}
 
-function cleanFeedback() {
-    $("#feedback").html("");
-}
+//function cleanFeedback() {
+//    $("#feedback").html("");
+//}
