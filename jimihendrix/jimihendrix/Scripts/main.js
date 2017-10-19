@@ -6,8 +6,8 @@ window.onload = function () {
 
     setup();
 
-    var pxBgScene = new Parallax(document.getElementById('bgScene'));
-    var pxScene = new Parallax(document.getElementById('scene'));
+    var pxBgScene = new Parallax(document.getElementById('backScene'));
+    var pxScene = new Parallax(document.getElementById('frontScene'));
 
     pxSetup(pxBgScene, pxScene);
 }
@@ -16,10 +16,12 @@ window.onload = function () {
 function setup() {
 
     centerElement("frame", "frame");
-    centerElement("bgScene", "bgScene");
-    centerElement("scene", "scene");
+    centerElement("backScene", "backScene");
+    centerElement("frontScene", "frontScene");
 }
 
+//todo: is this really what I have to do to see if the thing is mobile or not?
+var isReallyMobile = false;
 function initEvents(px1, px2) {
 
     window.onresize = function () {
@@ -28,6 +30,29 @@ function initEvents(px1, px2) {
 
         pxInvertAxisForMobile(px1);
         pxInvertAxisForMobile(px2);
+    }
+
+
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", function () {
+
+            if (event.alpha && event.beta && event.gamma) {
+                isReallyMobile = true;
+            }
+
+        }, true);
+    }
+
+    if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', function () {
+
+            if (event.accelleration) {
+                if (event.accelleration.x && event.accelleration.y && event.accelleration.z) {
+                    isReallyMobile = true;
+                }
+            }
+
+        }, true);
     }
 }
 
@@ -62,8 +87,6 @@ function pxScalar(px) {
     px.scalar(30, 30);
 }
 
-
-
 //display
 function centerElement(id, referenceId) {
 
@@ -83,9 +106,14 @@ function isLandscape() {
 }
 
 function isMobile() {
-    return typeof window.orientation !== 'undefined';
-}
 
+    //todo: do something about this...
+    window.removeEventListener("deviceorientation");
+    window.removeEventListener('devicemotion');
+
+    return isReallyMobile;
+    //return typeof window.orientation !== 'undefined'; //this seems not enough
+}
 
 //feedback
 //function frameFeedback() {
