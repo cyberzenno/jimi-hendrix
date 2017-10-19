@@ -12,14 +12,19 @@ body {
 #frame {
 }
 
-#bgScene {
-    overflow: hidden;
-    background-color: white;
-}
-
-#scene, #bgScene {
+#frontScene, #backScene {
     width: 800px;
     height: 579px;
+    /*border: 5px solid red;*/
+}
+
+#frontScene {
+    /*border: 5px solid pink;*/
+}
+
+#backScene {
+    overflow: hidden;
+    background-color: white;
     /*border: 5px solid red;*/
 }
 
