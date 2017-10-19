@@ -40,7 +40,7 @@ function initEvents(px1, px2) {
                 isReallyMobile = true;
             }
 
-        }, true);
+        },);
     }
 
     if (window.DeviceMotionEvent) {
@@ -108,8 +108,8 @@ function isLandscape() {
 function isMobile() {
 
     //todo: do something about this...
-    window.removeEventListener("deviceorientation");
-    window.removeEventListener('devicemotion');
+    window.removeEventListener("deviceorientation", true);
+    window.removeEventListener('devicemotion', true);
 
     return isReallyMobile;
     //return typeof window.orientation !== 'undefined'; //this seems not enough
