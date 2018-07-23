@@ -39,3 +39,23 @@ body {
     width: 300px;
     background-color: white;
 }
+
+#copyright {
+    color: white;
+}
+
+#container {
+}
+
+#copyright {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
